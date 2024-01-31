@@ -6,7 +6,7 @@
   "author": "shyam ganesh <shyamganeshravichandran@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "create-monorepo": "node tasks/index.js"
+    "create-react-application": "node tasks/index.js"
   },
   "dependencies": {
     "commander": "^11.1.0",
