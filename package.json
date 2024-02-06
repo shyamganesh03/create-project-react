@@ -1,12 +1,12 @@
 {
-  "name": "mono-repo-cli",
-  "version": "1.0.0",
+  "name": "create-project-business",
+  "version": "1.0.1",
   "main": "packages/src/index.js",
-  "repository": "https://github.com/shyamganesh03/MonoRepoCLI.git",
+  "repository": "https://github.com/shyamganesh03/create-react-application.git",
   "author": "shyam ganesh <shyamganeshravichandran@gmail.com>",
   "license": "MIT",
-  "scripts": {
-    "create-react-application": "node tasks/index.js"
+  "bin": {
+    "create-project-business": "node tasks/index.js"
   },
   "dependencies": {
     "commander": "^11.1.0",
