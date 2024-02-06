@@ -4,6 +4,9 @@
 const fs = require('fs');
 const path = require('path');
 const cp = require('child_process');
+const isGitAvailable = require("../utils/checkingGitAvailability");
+const repoDetails = require("../constants/repoList");
+const cloneRepository = require("../utils/cloneRepo");
 
 
 const cleanup = () => {
@@ -34,8 +37,15 @@ process.on('uncaughtException', handleError);
 
 console.log('Checking the git status...')
 
-const gitStatus = cp.execSync(`git status --porcelain`).toString();
+const gitStatus = isGitAvailable()
 
-if (gitStatus.trim() !== '') {
-    console.log('git check has been completed successfully')
+if (gitStatus) {
+    console.log('Git already initialized')
 }
+else {
+    console.log('Please install git')
+}
+
+console.log('Cloning mono repo...')
+
+cloneRepository({ repoUrl: repoDetails.monoRepo })
