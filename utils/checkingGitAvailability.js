@@ -1,12 +1,12 @@
-const { execSync } = require('child_process');
+const { execSync } = require('child_process')
 
 function isGitAvailable() {
     try {
-        execSync('git --version');
-        return true;
+        execSync('git --version')
+        return true
     } catch (error) {
-        return false;
+        return false
     }
 }
 
-module.exports = isGitAvailable;
+module.exports = isGitAvailable

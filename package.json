@@ -1,16 +1,27 @@
 {
-  "name": "create-project-business",
-  "version": "1.0.1",
-  "main": "packages/src/index.js",
-  "repository": "https://github.com/shyamganesh03/create-react-application.git",
-  "author": "shyam ganesh <shyamganeshravichandran@gmail.com>",
-  "license": "MIT",
-  "bin": {
-    "create-project-business": "node tasks/index.js"
-  },
-  "dependencies": {
-    "commander": "^11.1.0",
-    "shelljs": "^0.8.5",
-    "simple-git": "^3.22.0"
-  }
+    "name": "create-project-business",
+    "version": "1.0.1",
+    "main": "packages/src/index.js",
+    "repository": "https://github.com/shyamganesh03/create-react-application.git",
+    "author": "shyam ganesh <shyamganeshravichandran@gmail.com>",
+    "license": "MIT",
+    "bin": {
+        "create-project-business": "node tasks/index.js"
+    },
+    "scripts": {
+        "format:check": "prettier --check .",
+        "format:write": "prettier --write .",
+        "lint:check": "eslint .",
+        "lint:fix": "eslint --fix ."
+    },
+    "dependencies": {
+        "commander": "^11.1.0",
+        "shelljs": "^0.8.5",
+        "simple-git": "^3.22.0"
+    },
+    "devDependencies": {
+        "eslint": "^8.56.0",
+        "eslint-config-prettier": "^9.1.0",
+        "prettier": "^3.2.5"
+    }
 }
