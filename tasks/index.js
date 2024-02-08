@@ -1,19 +1,18 @@
 #!/usr/bin/env node
 'use strict'
-
-const fs = require('fs')
-const path = require('path')
 const cp = require('child_process')
+const shell = require('shelljs');
 const isGitAvailable = require('../utils/checkingGitAvailability')
 const repoDetails = require('../constants/repoList')
 const cloneRepository = require('../utils/cloneRepo')
 
+const projectName = process.argv[2]
+
+console.log(projectName)
+
 const cleanup = () => {
     console.log('Cleaning up.')
-    // Reset changes made to package.json files.
     cp.execSync(`git checkout -- packages/*/package.json`)
-    // Uncomment when snapshot testing is enabled by default:
-    // rm ./template/src/__snapshots__/App.test.js.snap
 }
 
 const handleExit = () => {
@@ -45,4 +44,12 @@ if (gitStatus) {
 
 console.log('Cloning mono repo...')
 
-cloneRepository({ repoUrl: repoDetails.monoRepo })
+cloneRepository({ repoUrl: repoDetails.monoRepo.repoUrl })
+
+console.log('.....Initializing Your Project')
+
+shell.mv(repoDetails.monoRepo.repoName, projectName)
+
+console.log('Project Initialized successfully....')
+
+
