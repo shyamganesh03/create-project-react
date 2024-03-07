@@ -1,3 +1,3 @@
-const testApp = require('create-project-business')
+const testApp = require('create-project-react')
 
 module.exports = testApp
