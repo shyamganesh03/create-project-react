@@ -1,6 +1,6 @@
 {
     "name": "create-project-react",
-    "version": "1.0.3",
+    "version": "1.0.4",
     "main": "./tasks/index.js",
     "repository": "https://github.com/shyamganesh03/create-project-react.git",
     "author": "shyam ganesh <shyamganeshravichandran@gmail.com>",
@@ -12,8 +12,7 @@
         "lint:check": "eslint .",
         "lint:fix": "eslint --fix .",
         "publish-package": "npm publish --access public",
-        "publish-package:beta": "npm publish --access public --tag beta",
-        "test": "node tasks/index.js"
+        "publish-package:beta": "npm publish --access public --tag beta"
     },
     "dependencies": {
         "commander": "^11.1.0",
