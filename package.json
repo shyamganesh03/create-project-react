@@ -1,6 +1,6 @@
 {
     "name": "create-project-react",
-    "version": "1.0.4",
+    "version": "1.0.5",
     "main": "./tasks/index.js",
     "repository": "https://github.com/shyamganesh03/create-project-react.git",
     "author": "shyam ganesh <shyamganeshravichandran@gmail.com>",
