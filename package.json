@@ -1,6 +1,6 @@
 {
     "name": "create-project-react",
-    "version": "1.0.5",
+    "version": "1.0.6",
     "main": "./tasks/index.js",
     "repository": "https://github.com/shyamganesh03/create-project-react.git",
     "author": "shyam ganesh <shyamganeshravichandran@gmail.com>",
@@ -15,9 +15,7 @@
         "publish-package:beta": "npm publish --access public --tag beta"
     },
     "dependencies": {
-        "commander": "^11.1.0",
-        "shelljs": "^0.8.5",
-        "simple-git": "^3.22.0"
+        "shelljs": "^0.8.5"
     },
     "devDependencies": {
         "eslint": "^8.56.0",
