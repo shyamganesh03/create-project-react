@@ -23,7 +23,7 @@ npm install -g create-project-react
 Once installed, you can use create-project-react to initialize a new React Native monorepo project. Navigate to the directory where you want to create your project and execute the following command:
 
 ```
-npm create-project-react <projectName>
+npx create-project-react <projectName>
 
 ```
 
