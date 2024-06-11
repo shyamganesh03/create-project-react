@@ -9,7 +9,7 @@ const fs = require('fs').promises;
 
 const defaultFolderName = repoDetails.monoRepo.repoName
 const projectName = process.argv[2];
-const basePath = `${defaultFolderName}/platforms/mobile`;
+const basePath = `${defaultFolderName}/apps/monoRepo`;
 const androidBasePath = `${basePath}/android/app`;
 const iosBasePath = `${basePath}/ios`
 
@@ -21,47 +21,47 @@ if (!projectName) {
 }
 
 const settingUpBaseFolder = async () => {
-    await replaceStringInFile(`${defaultFolderName}/packages/shared/package.json`, 'monorepo', projectName);
-    await replaceStringInFile(`${basePath}/app.json`, 'mobile', projectName);
-    await replaceStringInFile(`${basePath}/index.js`, 'monorepo', `${projectName}`);
+    await replaceStringInFile(`${defaultFolderName}/packages/shared/package.json`, 'monoRepo', projectName);
+    await replaceStringInFile(`${basePath}/app.json`, 'monoRepo', projectName);
+    await replaceStringInFile(`${basePath}/index.js`, 'monoRepo', `${projectName}`);
 };
 
 
 const settingUpAndroid = async () => {
-    await replaceStringInFile(`${androidBasePath}/build.gradle`, 'mobile', `${projectName}`);
-    await replaceStringInFile(`${basePath}/android/settings.gradle`, 'mobile', `${projectName}`);
-    await replaceStringInFile(`${androidBasePath}/src/main/res/values/strings.xml`, 'mobile', `${projectName}`);
-    await replaceStringInFile(`${androidBasePath}/src/main/java/com/mobile/MainActivity.kt`, 'com.mobile', `com.${projectName}`);
-    await replaceStringInFile(`${androidBasePath}/src/main/java/com/mobile/MainActivity.kt`, 'mobile', `${projectName}`);
-    await replaceStringInFile(`${androidBasePath}/src/main/java/com/mobile/MainApplication.kt`, 'com.mobile', `com.${projectName}`);
+    await replaceStringInFile(`${androidBasePath}/build.gradle`, 'monoRepo', `${projectName}`);
+    await replaceStringInFile(`${basePath}/android/settings.gradle`, 'monoRepo', `${projectName}`);
+    await replaceStringInFile(`${androidBasePath}/src/main/res/values/strings.xml`, 'monoRepo', `${projectName}`);
+    await replaceStringInFile(`${androidBasePath}/src/main/java/com/monoRepo/MainActivity.kt`, 'com.monoRepo', `com.${projectName}`);
+    await replaceStringInFile(`${androidBasePath}/src/main/java/com/monoRepo/MainActivity.kt`, 'monoRepo', `${projectName}`);
+    await replaceStringInFile(`${androidBasePath}/src/main/java/com/monoRepo/MainApplication.kt`, 'com.monoRepo', `com.${projectName}`);
 };
 
 const settingUpIOS = async () => {
-    await replaceStringInFile(`${iosBasePath}/Podfile`, 'mobile', projectName);
-    await replaceStringInFile(`${iosBasePath}/mobile/AppDelegate.mm`, 'mobile', projectName);
-    await replaceStringInFile(`${iosBasePath}/mobile/info.plist`, 'mobile', projectName);
-    await replaceStringInFile(`${iosBasePath}/mobile/LaunchScreen.storyboard`, 'mobile', projectName);
-    await replaceStringInFile(`${iosBasePath}/mobile.xcodeproj/xcshareddata/xcschemes/mobile.xcscheme`, 'mobile', projectName);
-    await replaceStringInFile(`${iosBasePath}/mobile.xcodeproj/project.pbxproj`, 'mobile', projectName);
-    await replaceStringInFile(`${iosBasePath}/mobile.xcworkspace/contents.xcworkspacedata`, 'mobile', projectName);
-    await replaceStringInFile(`${iosBasePath}/mobileTests/mobileTests.m`, 'mobile', projectName);
+    await replaceStringInFile(`${iosBasePath}/Podfile`, 'monoRepo', projectName);
+    await replaceStringInFile(`${iosBasePath}/monoRepo/AppDelegate.mm`, 'monoRepo', projectName);
+    await replaceStringInFile(`${iosBasePath}/monoRepo/info.plist`, 'monoRepo', projectName);
+    await replaceStringInFile(`${iosBasePath}/monoRepo/LaunchScreen.storyboard`, 'monoRepo', projectName);
+    await replaceStringInFile(`${iosBasePath}/monoRepo.xcodeproj/xcshareddata/xcschemes/monoRepo.xcscheme`, 'monoRepo', projectName);
+    await replaceStringInFile(`${iosBasePath}/monoRepo.xcodeproj/project.pbxproj`, 'monoRepo', projectName);
+    await replaceStringInFile(`${iosBasePath}/monoRepo.xcworkspace/contents.xcworkspacedata`, 'monoRepo', projectName);
+    await replaceStringInFile(`${iosBasePath}/mobileTests/mobileTests.m`, 'monoRepo', projectName);
 }
 
 const changeFolderName = async () => {
     shell.cd(`${androidBasePath}/src/main/java/com`);
-    shell.mv('mobile', projectName);
+    shell.mv('monoRepo', projectName);
     shell.cd('-')
     shell.cd(`${iosBasePath}`)
-    shell.mv('mobile', projectName);
-    shell.mv('mobile.xcodeproj', `${projectName}.xcodeproj`);
-    shell.mv('mobile.xcworkspace', `${projectName}.xcworkspace`);
+    shell.mv('monoRepo', projectName);
+    shell.mv('monoRepo.xcodeproj', `${projectName}.xcodeproj`);
+    shell.mv('monoRepo.xcworkspace', `${projectName}.xcworkspace`);
     shell.mv('mobileTests', projectName);
     shell.cd('..')
     shell.cd('..')
 }
 
 const settingUpWeb = async () => {
-    await replaceStringInFile(`${defaultFolderName}/platforms/web/src/index.tsx`, 'monorepo', `${projectName}`);
+    await replaceStringInFile(`${defaultFolderName}/apps/web/src/index.tsx`, 'monoRepo', `${projectName}`);
 }
 
 const replaceStringInFile = async (filePath, searchString, replaceString) => {
