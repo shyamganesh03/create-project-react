@@ -9,7 +9,7 @@ const fs = require('fs').promises;
 
 const defaultFolderName = repoDetails.monoRepo.repoName
 const projectName = process.argv[2];
-const basePath = `${defaultFolderName}/apps/monoRepo`;
+const basePath = `${defaultFolderName}/apps/mobile`;
 const androidBasePath = `${basePath}/android/app`;
 const iosBasePath = `${basePath}/ios`
 
@@ -21,7 +21,11 @@ if (!projectName) {
 }
 
 const settingUpBaseFolder = async () => {
-    await replaceStringInFile(`${defaultFolderName}/packages/shared/package.json`, 'monoRepo', projectName);
+    await replaceStringInFile(`${defaultFolderName}/packages/core/package.json`, 'monoRepo', projectName);
+    await replaceStringInFile(`${defaultFolderName}/packages/shared-hooks/package.json`, 'monoRepo', projectName);
+    await replaceStringInFile(`${defaultFolderName}/packages/jotai-storage/package.json`, 'monoRepo', projectName);
+    await replaceStringInFile(`${defaultFolderName}/packages/shared-translation/package.json`, 'monoRepo', projectName);
+    await replaceStringInFile(`${defaultFolderName}/tsconfig.json`, 'monoRepo', projectName);
     await replaceStringInFile(`${basePath}/app.json`, 'monoRepo', projectName);
     await replaceStringInFile(`${basePath}/index.js`, 'monoRepo', `${projectName}`);
 };
@@ -44,7 +48,7 @@ const settingUpIOS = async () => {
     await replaceStringInFile(`${iosBasePath}/monoRepo.xcodeproj/xcshareddata/xcschemes/monoRepo.xcscheme`, 'monoRepo', projectName);
     await replaceStringInFile(`${iosBasePath}/monoRepo.xcodeproj/project.pbxproj`, 'monoRepo', projectName);
     await replaceStringInFile(`${iosBasePath}/monoRepo.xcworkspace/contents.xcworkspacedata`, 'monoRepo', projectName);
-    await replaceStringInFile(`${iosBasePath}/mobileTests/mobileTests.m`, 'monoRepo', projectName);
+    await replaceStringInFile(`${iosBasePath}/monoRepoTests/monoRepoTests.m`, 'monoRepo', projectName);
 }
 
 const changeFolderName = async () => {
@@ -140,9 +144,3 @@ checkNodeInstalled()
         console.error('node is not installed or an error occurred:', error.message);
         process.exit(1);
     });
-
-
-
-
-
-
